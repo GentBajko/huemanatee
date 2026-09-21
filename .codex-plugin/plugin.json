@@ -1,0 +1,39 @@
+{
+  "name": "huemanatee",
+  "version": "0.1.0",
+  "description": "Human-sounding rewrites for robotic, overbalanced AI prose without invented facts or padded length.",
+  "author": {
+    "name": "Gent Bajko",
+    "email": "gent.bajko@gmail.com",
+    "url": "https://github.com/GentBajko"
+  },
+  "homepage": "https://github.com/GentBajko/huemanatee",
+  "repository": "https://github.com/GentBajko/huemanatee",
+  "keywords": [
+    "writing",
+    "editing",
+    "humanize",
+    "prose",
+    "ai-writing",
+    "skills"
+  ],
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks.json",
+  "interface": {
+    "displayName": "Huemanatee",
+    "shortDescription": "Make AI prose sound human",
+    "longDescription": "Rewrites robotic, overbalanced prose into competent human writing. Preserves meaning and dialect, cuts throat-clearing, varies rhythm, removes common AI tells, and leaves placeholders instead of inventing facts.",
+    "developerName": "Gent Bajko",
+    "category": "Writing",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Rewrite this draft so it sounds like a competent human wrote it.",
+      "Humanize this prose without changing its meaning or inventing facts."
+    ],
+    "websiteURL": "https://github.com/GentBajko/huemanatee"
+  }
+}

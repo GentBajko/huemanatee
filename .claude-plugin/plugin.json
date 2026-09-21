@@ -1,0 +1,22 @@
+{
+  "name": "huemanatee",
+  "displayName": "Huemanatee",
+  "description": "Rewrite robotic, overbalanced prose into clear human writing without inventing facts or padding the draft.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Gent Bajko",
+    "email": "gent.bajko@gmail.com"
+  },
+  "homepage": "https://github.com/GentBajko/huemanatee",
+  "repository": "https://github.com/GentBajko/huemanatee",
+  "keywords": [
+    "writing",
+    "editing",
+    "humanize",
+    "prose",
+    "ai-writing",
+    "skills"
+  ],
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks.json"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "huemanatee-marketplace",
+  "owner": {
+    "name": "Gent Bajko",
+    "email": "gent.bajko@gmail.com",
+    "url": "https://github.com/GentBajko"
+  },
+  "metadata": {
+    "description": "Huemanatee: human-sounding rewrites for robotic AI prose",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "huemanatee",
+      "source": "./",
+      "description": "Humanize prose by cutting AI-writing tells, varying rhythm, preserving meaning, and refusing to invent facts.",
+      "strict": true
+    }
+  ]
+}

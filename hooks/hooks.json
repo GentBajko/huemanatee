@@ -1,0 +1,17 @@
+{
+  "description": "Suggest Huemanatee for prose-rewriting and AI-writing-humanization requests.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}\"/hooks/auto-humanize.py",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
