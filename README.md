@@ -21,8 +21,8 @@
 </p>
 
 <p align="center">
-  A focused writing skill for turning robotic, over-balanced drafts into
-  competent human prose without padding the copy or inventing specifics.
+  A writing skill for turning stiff, over-balanced drafts into clear prose
+  without padding the copy or making up specifics.
 </p>
 
 <p align="center">
@@ -44,26 +44,26 @@
 /plugin install huemanatee@huemanatee-marketplace
 ```
 
-This installs the skill and its automatic prompt hook.
+This installs the skill and its prompt hook.
 
-### Any other agent
+### Hosts that use the Skills CLI
 
-The Skills CLI installs the canonical skill bundle, including its
-`references/` file:
+The Skills CLI installs the skill bundle, including its `references/`
+file:
 
 ```bash
 npx skills add GentBajko/huemanatee
 ```
 
-The same repository can be installed to a specific agent or globally:
+To target a host or install globally:
 
 ```bash
 npx skills add GentBajko/huemanatee --agent codex --global
 npx skills add GentBajko/huemanatee --agent cursor --global
 ```
 
-The portable skill is automatic only where the host supports skill
-selection. Host-level hooks are separate; see [Automatic activation](#automatic-activation).
+The skill files travel with the install. Host-level hooks are configured
+separately; see [Automatic activation](#automatic-activation).
 
 ## Update
 
@@ -72,27 +72,26 @@ selection. Host-level hooks are separate; see [Automatic activation](#automatic-
 | Claude Code plugin | `claude plugin marketplace update huemanatee-marketplace`<br>then `claude plugin update huemanatee@huemanatee-marketplace` |
 | `npx skills` | `npx skills update` |
 
-Restart the host after a plugin update if it keeps an older skill or hook
-in memory.
+Restart the host after a plugin update if it keeps an older copy of the
+skill or hook.
 
 ## Automatic activation
 
-The Claude Code marketplace plugin and the Codex plugin bundle a
-`UserPromptSubmit` hook. It watches for requests about rewriting,
-humanizing, robotic or ChatGPT-like prose, and similar wording. When a
-prompt fits, it adds a small reminder to use Huemanatee and its tell
+The Claude Code marketplace plugin and the Codex plugin include a
+`UserPromptSubmit` hook. It looks for requests to rewrite or humanize
+prose, including drafts described as robotic or ChatGPT-like. When a
+prompt fits, the hook reminds the host to use Huemanatee and its tell
 catalog.
 
-The hook deliberately leaves source code, configuration, and
-machine-readable output alone. Explicitly naming Huemanatee still works
-when the target is prose.
+The hook ignores source code, configuration, and machine-readable output.
+If the user names Huemanatee directly, the skill still applies when the
+target is prose.
 
-Codex may ask you to review and trust the bundled hook before it runs. That
-is a one-time safety check for plugin-provided commands.
+Codex may ask for permission to trust the bundled hook before running it.
+That is a one-time safety check for plugin-provided commands.
 
-Hooks are host-specific. The `npx skills` command installs skill files; it
-does not edit each agent's global hook configuration. Current native hook
-surfaces include:
+Hooks belong to the host. `npx skills` installs skill files; it does not
+edit each host's global hook configuration. The native prompt hooks are:
 
 | Host | Prompt hook | Huemanatee status |
 | --- | --- | --- |
@@ -108,33 +107,26 @@ and [Cursor hooks](https://cursor.com/docs/hooks).
 
 ## How it works
 
-Huemanatee follows a strict rewrite contract:
+Huemanatee keeps the rewrite contract simple:
 
-* **Shrink to fit:** Preserve the original meaning and dialect, but cut
-  throat-clearing. The result can be shorter; it is never padded to hit a
-  word count.
-* **No invented facts:** If the draft needs a metric or anecdote only the
-  author knows, leave a marked slot instead of making one up.
-* **Silent delivery:** Return only the rewritten text unless the user asks
-  for commentary or an explanation.
-* **Asymmetric coverage:** Skip the obvious and spend words where the
-  argument actually needs them.
+- Keep the meaning and the writer's dialect. Cut throat-clearing; a
+  shorter result is fine.
+- Do not make up metrics, anecdotes, or other facts. If the draft needs
+  something only its author can supply, leave a marked slot.
+- Return the rewrite by itself unless the user asks for commentary.
+- Spend words where the argument needs them. Skip the obvious parts.
 
 Before a longer rewrite, the skill reads
-[`references/tells.md`](skills/huemanatee/references/tells.md), which covers:
-
-* ban-list vocabulary and stock phrases;
-* uniform rhythm, fake parallelism, and the “not just” construction;
-* unnecessary headings, summary closers, and brochure-like tone;
-* a final pass for substance, specificity, and a sharp ending.
+[`references/tells.md`](skills/huemanatee/references/tells.md). It covers
+stock phrases, uniform rhythm, fake parallelism, unnecessary headings,
+summary closers, and brochure-like tone.
 
 ## Scope
 
-Huemanatee is for blog posts, articles, marketing copy, release notes,
+Use Huemanatee for blog posts, articles, marketing copy, release notes,
 READMEs, and other prose. It is not for source code, configuration files,
 structured data, or machine-readable output.
 
-If the goal is passing an AI detector, the skill makes prose less
-recognizably synthetic to human readers but cannot guarantee a classifier
-result. High-stakes authorship still needs details and manual edits from the
-actual author.
+If the goal is to pass an AI detector, Huemanatee can make the writing
+less synthetic to human readers, but it cannot promise a classifier result.
+High-stakes authorship still needs details and edits from the actual author.
